@@ -1,0 +1,66 @@
+{
+  "project": "AI Invoice Automation",
+  "version": "1.0",
+  "workflow": [
+    {
+      "id": 1,
+      "name": "Upload Invoice PDF",
+      "component": "Streamlit File Uploader",
+      "output": "PDF File"
+    },
+    {
+      "id": 2,
+      "name": "Save PDF",
+      "component": "Python",
+      "output": "uploads/invoice.pdf"
+    },
+    {
+      "id": 3,
+      "name": "Extract PDF Text",
+      "component": "PyPDF2 PdfReader",
+      "output": "Extracted Invoice Text"
+    },
+    {
+      "id": 4,
+      "name": "AI Invoice Extraction",
+      "component": "Google Gemini API",
+      "output": "Structured JSON"
+    },
+    {
+      "id": 5,
+      "name": "Manual Review",
+      "component": "Streamlit Form",
+      "output": "Verified Invoice"
+    },
+    {
+      "id": 6,
+      "name": "Department Routing",
+      "component": "Python Rule Engine",
+      "rule": "Cost Center → Department"
+    },
+    {
+      "id": 7,
+      "name": "Approval Rule",
+      "component": "Python Decision",
+      "rule": "Gross Amount > 10000"
+    },
+    {
+      "id": 8,
+      "name": "Save Invoice",
+      "component": "SQLite",
+      "output": "Invoice Saved"
+    },
+    {
+      "id": 9,
+      "name": "Approve / Reject",
+      "component": "Streamlit",
+      "output": "Updated Status"
+    },
+    {
+      "id": 10,
+      "name": "Dashboard",
+      "component": "Streamlit Metrics",
+      "output": "Invoice Statistics"
+    }
+  ]
+}
